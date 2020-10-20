@@ -1,5 +1,5 @@
 # OpenQuizz
-First OpenClassrooms MVC app.
+First OpenClassrooms MVC app (UIKit)
 
 notes: 
 - Using singleton pattern with QuestionManager.shared (Game class)
