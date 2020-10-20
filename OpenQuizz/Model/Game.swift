@@ -19,17 +19,15 @@ class Game {
         return questions[currentIndex]
     }
     
-    private func receiveQuestions(_ questions: [Question]) {
-        self.questions = questions
-        print(questions)
-        state = .ongoing
-    }
     func refresh() {
         score = 0
         currentIndex = 0
         state = .over
         
-        QuestionManager.shared.get(completionHandler: receiveQuestions(_:))
+        QuestionManager.shared.get { (questions) in
+            self.questions = questions
+            self.state = .ongoing
+        }
     }
     func answerCurrentQuestion(with answer: Bool) {
         if (currentQuestion.isCorrect && answer) || (!currentQuestion.isCorrect && !answer) {
