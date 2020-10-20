@@ -3,7 +3,7 @@ First OpenClassrooms MVC app.
 
 notes: 
 - Using singleton pattern with QuestionManager.shared (Game class)
-- Using notifications (Fundation Kit) :
+- Using Notifications Types (Fundation Kit) :
   - Notification.Name
   - Notification
   - NotificationCenter
