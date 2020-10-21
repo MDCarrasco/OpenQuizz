@@ -7,4 +7,4 @@ notes:
   - Notification.Name
   - Notification
   - NotificationCenter
-- Using UIGestureRecognizer
+- Using UIGestureRecognizer subclasses
