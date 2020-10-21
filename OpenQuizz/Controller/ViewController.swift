@@ -20,12 +20,32 @@ class ViewController: UIViewController {
         newGameButton.isHidden = false
         questionView.title = game.currentQuestion.title
     }
+    private func transformQuestionViewWith(gesture: UIPanGestureRecognizer) {
+        
+    }
+    private func answerQuestion() {
+        
+    }
+    @objc func dragQuestionView(_ sender: UIPanGestureRecognizer) {
+        if game.state == .ongoing {
+            switch sender.state {
+            case .began, .changed:
+                transformQuestionViewWith(gesture: sender)
+            case .cancelled, .ended:
+                answerQuestion()
+            default:
+                break
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = Notification.Name(rawValue: "QuestionsLoaded")
         NotificationCenter.default.addObserver(self, selector: #selector(questionsLoaded), name: name, object: nil)
         
         startNewGame()
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragQuestionView(_:)))
+        questionView.addGestureRecognizer(panGestureRecognizer)
     }
     
     @IBAction func didTapNewGameButton() {
