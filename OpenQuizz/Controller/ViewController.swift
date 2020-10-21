@@ -21,7 +21,15 @@ class ViewController: UIViewController {
         questionView.title = game.currentQuestion.title
     }
     private func transformQuestionViewWith(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: questionView)
+        let translationTransform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        let screenWidth = UIScreen.main.bounds.width
+        let translationPercent = translation.x / (screenWidth/2)
+        let rotationAngle = (CGFloat.pi / 6) * translationPercent
+        let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
         
+        let transform = translationTransform.concatenating(rotationTransform)
+        questionView.transform = transform
     }
     private func answerQuestion() {
         
