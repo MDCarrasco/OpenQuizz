@@ -39,8 +39,8 @@ class ViewController: UIViewController {
     }
     private func showQuestionView() {
         questionView.transform = .identity
+        questionView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         questionView.style = .standard
-        questionView.title = game.currentQuestion.title
         
         switch game.state {
         case .ongoing:
@@ -48,6 +48,10 @@ class ViewController: UIViewController {
         case .over:
             questionView.title = "Game Over"
         }
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            self.questionView.transform = .identity
+        }, completion: nil)
+
     }
     private func answerQuestion() {
         switch questionView.style {
