@@ -30,9 +30,49 @@ class ViewController: UIViewController {
         
         let transform = translationTransform.concatenating(rotationTransform)
         questionView.transform = transform
+        
+        if translation.x > 0 {
+            questionView.style = .correct
+        } else {
+            questionView.style = .incorrect
+        }
+    }
+    private func showQuestionView() {
+        questionView.transform = .identity
+        questionView.style = .standard
+        questionView.title = game.currentQuestion.title
+        
+        switch game.state {
+        case .ongoing:
+            questionView.title = game.currentQuestion.title
+        case .over:
+            questionView.title = "Game Over"
+        }
     }
     private func answerQuestion() {
-        
+        switch questionView.style {
+        case .correct:
+            game.answerCurrentQuestion(with: true)
+        case .incorrect:
+            game.answerCurrentQuestion(with: false)
+        case .standard:
+            break
+        }
+        scoreLabel.text = "\(game.score) / 10"
+        let screenWidth = UIScreen.main.bounds.width
+        var translationTransform: CGAffineTransform
+        if questionView.style == .correct {
+            translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)
+        } else {
+            translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
+        }
+        UIView.animate(withDuration: 0.3,animations: {
+            self.questionView.transform = translationTransform
+        }) {(success) in
+            if success {
+                self.showQuestionView()
+            }
+        }
     }
     @objc func dragQuestionView(_ sender: UIPanGestureRecognizer) {
         if game.state == .ongoing {
