@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,13 +15,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Loading" translatesAutoresizingMaskIntoConstraints="NO" id="svu-Ld-zG6">
-                                <rect key="frame" x="87" y="223" width="241" height="290"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Loading" translatesAutoresizingMaskIntoConstraints="NO" id="svu-Ld-zG6">
+                                <rect key="frame" x="86.666666666666686" y="223" width="241" height="290"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="svu-Ld-zG6" secondAttribute="height" multiplier="241:290" id="0TP-8e-80c"/>
+                                    <constraint firstAttribute="width" constant="241" id="fYV-Wc-Izz"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.3581834733" green="0.41779068110000001" blue="0.50197225810000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="svu-Ld-zG6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BBD-eq-wnO"/>
+                            <constraint firstItem="svu-Ld-zG6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="geI-tV-cSU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
