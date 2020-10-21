@@ -7,3 +7,4 @@ notes:
   - Notification.Name
   - Notification
   - NotificationCenter
+- Using UIGestureRecognizer and UITouch
